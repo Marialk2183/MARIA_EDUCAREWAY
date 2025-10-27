@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WT PROJECT</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .slider-container {
+            width: fit-content;
+            height: auto;
+            background-color: rgb(255, 255, 255);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .slider {
+            display: flex;
+            gap: 20px;
+            transition: transform 0.5s ease;
+            background-color: rgb(0, 0, 0);
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .slide {
+            min-width: 300px;
+            height: 400px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            background-image: linear-gradient(to left,rgb(0, 0, 0), rgb(0, 145, 255));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            color: white;
+            font-size: 20px;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .slide:hover {
+            transform: scale(1.35);
+            background-color: orangered;
+        }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  
+}
+body {
+  background: #f0faff;
+  background-image: url("./black.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.nav {
+  position: fixed;
+  top: 25px;
+  left: 0;
+  width: 100%;
+  padding: 15px 20px;
+  background: #000000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.nav,
+.nav .nav-links {
+  display: flex;
+  align-items: center;
+}
+.nav {
+  justify-content: space-between;
+}
+a {
+  color: #fff;
+  text-decoration: none;
+}
+.nav .logo {
+  font-size: 22px;
+  font-weight: 500;
+}
+.nav .nav-links {
+  column-gap: 20px;
+  list-style: none;
+}
+.nav .nav-links a {
+  transition: all 0.2s linear;
+}
+a:hover{
+    color: red;
+}
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <ul class="nav-links">
+          <i class="uil uil-times navCloseBtn"></i>
+          <li><a href="#">Home</a></li>
+
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+        </div>
+      </nav>
+    <div class="slider-container">
+        <div class="slider">
+            <div class="slide">
+                
+                <a href="dbmsnotes.html">Lecture Notes</a>
+            </div>
+            <div class="slide">
+              <a href="dbms_video.html">Videos</a>
+            </div>
+            <div class="slide">
+              <a href="dbmsrb.html">Reference Notes</a>
+            </div>
+           
+        </div>
+    </div>
+
+    <script>
+
+</script>
+</body>
+</html>

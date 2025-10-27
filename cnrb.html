@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reference Book</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color:#fefefe;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            background-image: url(book.png); /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+            height: 90px; /* Adjust height as needed */
+            color: #0066cc;
+            padding: 20px;
+        }
+
+        .nav {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            width: 200px; /* Adjust width as needed */
+        }
+
+        .nav a {
+            color: #0a0000;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+            text-align: center; /* Center icons */
+            font-size: 50px;
+        }
+
+        .nav a:hover {
+            color: #030ae0; /* Change icon color on hover if desired */
+        }
+
+        .header-content {
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .header-content h1 {
+            margin: 0;
+            font-size: 2.5em; /* Adjust font size as needed */
+        }
+
+        .unit-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .unit-container {
+            background-color: rgb(174, 222, 251);
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            height: 120px;
+            width:100px;
+            
+        }
+
+        h2 {
+            color: #0066cc;
+            margin-bottom: 15px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #0066cc;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #004499;
+        }
+
+        img {
+            width: fit-content;
+            height: 100px;
+            object-fit: cover;
+        
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="nav">
+        <a href="Dashboard 1.html"><i class="fas fa-home"></i></a>
+    </div>
+    <div class="header-content">
+        <h1>Reference Book</h1>
+    </div>
+</div>
+
+<div class="unit-wrapper">
+    <div class="unit-container">
+      
+        <a href="unit1.pdf" target="_blank">
+            <img src="cnbook.png" >
+        </a>
+    </div>
+
+    <div class="unit-container">
+       
+        <a href="unit2.pdf" target="_blank">
+            <img src="cnbook1.jpeg" >
+        </a>
+    </div>
+
+    <div class="unit-container">
+       
+        <a href="unit3.pdf" target="_blank">
+            <img src="fororzan.jpeg" >
+        </a>
+    </div>
+
+    <div class="unit-container">
+        
+        <a href="unit4.pdf" target="_blank">
+            <img src="cnbook3.jpeg" >
+        </a>
+    </div>
+
+    <div class="unit-container">
+       
+        <a href="unit5.pdf" target="_blank">
+            <img src="cnbook2.jpeg" >
+        </a>
+    </div>
+</div>
+
+</body>
+</html>

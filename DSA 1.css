@@ -1,0 +1,108 @@
+/* General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+   
+  body {
+    background-color: #f4f4f4;
+    color: #333;
+  }
+   
+  header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+   
+  header h1 {
+    margin-bottom: 10px;
+  }
+   
+  nav ul {
+    list-style-type: none;
+  }
+   
+  nav ul li {
+    display: inline;
+    margin-right: 15px;
+  }
+   
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+   
+  main {
+    padding: 20px;
+  }
+   
+  h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+   
+  .parking-spots {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+   
+  .spot {
+    border: 2px solid #333;
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 10px;
+    width: 100px;
+    transition: all 0.3s ease-in-out;
+  }
+   
+  .spot.available {
+    background-color: #8bc34a;
+    color: white;
+  }
+   
+  .spot.taken {
+    background-color: #f44336;
+    color: white;
+  }
+   
+  .spot:hover {
+    transform: scale(1.1);
+  }
+   
+  #parking-actions {
+    margin-top: 40px;
+  }
+   
+  button {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-right: 10px;
+  }
+   
+  button:hover {
+    background-color: #555;
+  }
+   
+  /* Footer Styling */
+  footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+  }

@@ -1,0 +1,166 @@
+<html>
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-image: url(grad.jpeg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .subject-link {
+            color: rgb(8, 0, 0); /* Dark text color */
+            text-decoration: none;
+            font-size: 0.875rem; /* Smaller font size */
+            font-family: Arial, sans-serif;
+            font-weight: bold; /* Bold text */
+            display: flex;
+            justify-content: center; /* Horizontally center */
+            align-items: center;    /* Vertically center */
+            text-align: center;     /* Center the text itself */
+            height: 130px; /* Smaller height */
+            width: 130px; /* Smaller width */
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            border: 2px dotted black; /* Dotted border */
+            transition: transform 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            padding: 5px; /* Adjusted padding */
+        }
+
+        /* Background images for each circle */
+        .subject-1 {
+            background-image: url(ai.jpg);
+        }
+        .subject-2 {
+            background-image: url(ml3.jpg);
+        }
+        .subject-3 {
+            background-image: url(cloud.jpg);
+        }
+        .subject-4 {
+            background-image: url(cyber.jpg);
+        }
+        .subject-6 {
+            background-image: url(asp.jpg);
+        }
+
+        .circle-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px; /* Adjusted gap between circles */
+            align-items: center; /* Center vertically with arrows */
+        }
+
+        .subject-link:hover {
+            transform: scale(1.2); /* Slightly larger on hover */
+            color: blue; /* Change text color on hover */
+            border-color: blue; /* Change border color on hover */
+        }
+
+        /* Arrow styles */
+        .arrow {
+            font-size: 50px; /* Adjusted arrow size */
+            color: black;
+            text-decoration: none; /* Remove underline */
+        }
+
+        /* Navbar styling */
+        .navbar {
+            background: linear-gradient(45deg, #dba8db, #4bc3e4); /* Colorful gradient background */
+            padding: 20px;
+            color: rgb(26, 3, 3);
+            text-align: center;
+        }
+
+        .navbar a {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            padding: 10px 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: rgba(11, 0, 0, 0.2); /* Semi-transparent white */
+        }
+
+        a {
+            font-size: 30px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        /* Breadcrumb styles */
+        .breadcrumb {
+            padding: 10px 15px;
+            list-style: none;
+            background-color: transparent;
+            display: inline-flex;
+            margin-bottom: 10px; /* Space below breadcrumb */
+        }
+
+        .breadcrumb a {
+            text-decoration: none;
+            color: #000;
+            font-size: 18px;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb span {
+            margin: 0 5px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Header with Navigation Bar and Breadcrumbs -->
+    <div class="navbar">
+        
+        <!-- Breadcrumb Section -->
+        <nav aria-label="breadcrumb">
+            <ul class="breadcrumb">
+                <li><a href="Dashboard 1.html">Home</a></li>
+                <span>›</span>
+                
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Circle links with arrows -->
+    <div class="flex items-center justify-center min-h-screen">
+        <div class="circle-container">
+            <a href="#" class="subject-link subject-1"> </a>
+            <span class="arrow">→</span>
+            <a href="#" class="subject-link subject-2"></a>
+            <span class="arrow">→</span>
+            <a href="#" class="subject-link subject-3"></a>
+            <span class="arrow">→</span>
+            <a href="#" class="subject-link subject-4"></a>
+            <span class="arrow">→</span>
+            <a href="#" class="subject-link subject-6"> </a>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.subject-link').forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                link.style.transform = "scale(1.8)"; // Slightly larger on hover
+                link.style.color = "black"; // Change color on hover
+                link.style.borderColor = "black"; // Change border color on hover
+            });
+            link.addEventListener('mouseleave', () => {
+                link.style.transform = "scale(1)"; // Return to original size
+                link.style.color = "rgb(8, 0, 0)"; // Revert to original text color
+                link.style.borderColor = "black"; // Revert to original border color
+            });
+
+            link.addEventListener('click', (e) => {
+                
+            });
+        });
+    </script>
+</body>
+</html>

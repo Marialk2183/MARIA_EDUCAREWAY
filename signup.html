@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-Up Page</title>
+    <style>
+        /* Styles remain the same as your provided code */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #f0eef1, #2575fc);
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: #407eca8c;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: rgb(15, 58, 248);
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .navbar a:hover {
+            background-color: #0a47c1;
+            color: black;
+        }
+
+        .signup-container {
+             background-color: rgb(255, 255, 255);
+             padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgb(5, 0, 0), 0 6px 6px rgba(11, 0, 0, 0.445);
+            width: 350px;
+            text-align: center;
+            margin-top: 100px;
+}
+
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            border-color: #6dc1d6;
+            outline: none;
+        }
+
+        .btn {
+            background-color: #010003;
+            color: white;
+            padding: 12px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #ed0c0c;
+        }
+
+        #error-msg {
+            margin-top: 15px;
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="Dashboard 1.html">Home</a>
+        
+    </div>
+
+    <!-- Sign-Up Container -->
+    <div class="signup-container">
+        <h2>Sign Up</h2>
+        <form id="signupForm">
+            <div class="input-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Enter your name" required>
+            </div>
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="input-group">
+                <label for="sapid">Sapid</label>
+                <input type="text" id="sapid" placeholder="Enter your SAP ID" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="btn">Sign Up</button>
+        </form>
+        <p id="error-msg"></p>
+    </div>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const sapid = document.getElementById('sapid').value;
+            const password = document.getElementById('password').value;
+            const errorMsg = document.getElementById('error-msg');
+
+            // Simple regex patterns
+            const nameRegex = /^[A-Za-z\s]+$/;  // Only letters and spaces
+            const emailRegex = /^\S+@\S+\.\S+$/;  // Basic email format
+            const sapidRegex = /^\d{11}$/;  // Exactly 11 digits
+            const passwordRegex = /^.{6,}$/;  // Minimum 6 characters (any)
+
+            // Validation checks
+            if (!nameRegex.test(name)) {
+                errorMsg.textContent = 'Name can only contain letters and spaces.';
+                return;
+            }
+
+            if (!emailRegex.test(email)) {
+                errorMsg.textContent = 'Please enter a valid email address.';
+                return;
+            }
+
+            if (!sapidRegex.test(sapid)) {
+                errorMsg.textContent = 'SAP ID must be exactly 11 digits.';
+                return;
+            }
+
+            if (!passwordRegex.test(password)) {
+                errorMsg.textContent = 'Password must be at least 6 characters long.';
+                return;
+            }
+
+            // If validation passes
+            errorMsg.textContent = '';  // Clear any previous error messages
+
+            // Redirect to login page after successful sign-up
+            window.location.href = "login.html";  // Change "login.html" to your actual login page
+        });
+
+        // Add an event listener for the logout link
+        document.getElementById('logoutLink').addEventListener('click', function (event) {
+            event.preventDefault();
+            window.location.href = "NMIMS.html";  // Change to your desired page
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCA Study Materials</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f4f4;
+            
+        }
+        .navbar {
+            margin-bottom: 20px;
+            background-image: url("play.jpg");
+            background-size: 150px;
+            height: 2%;
+            background-color: rgb(5, 4, 90);
+        }
+        .navbar-brand {
+            font-size: 35px;
+            font-family: 'Times New Roman', Times, serif;
+            color: white;
+        }
+        
+        .container {
+                 color: #fff;
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 30px;
+    background: rgb(5, 4, 90);
+    box-shadow: 15px 15px 30px rgb(65, 61, 61), -15px -15px 30px rgb(139, 139, 139);
+}
+
+        .nav-link {
+            color: #FFD700; /* Default link color */
+        }
+        .nav-os .nav-link { color: red; }
+        .nav-cn .nav-link { color: rgb(18, 255, 18); }
+        .nav-dbms .nav-link { color: rgb(5, 2, 2); }
+        .nav-java .nav-link { color: rgb(255, 166, 0); }
+        .nav-wt .nav-link { color: purple; }
+        .nav-item .nav-link:hover { opacity: 0.7; }
+        .iframe-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            align-items: center;
+            justify-content: center;
+        }
+        .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .breadcrumb-item + .breadcrumb-item::before {
+            content: "/";
+            font-size: 27px;  /* Increase the size of the slash */
+            color: #ffffff;
+            vertical-align: middle; /* Align slash properly */
+            padding: 0 5px; /* Add space around the slash */
+        }
+        h2{
+            color: #fff;
+        }
+        #contain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+
+  .footer {
+    background-color: #222;
+    color: #fff;
+    padding: 40px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .footer-section {
+    flex: 1;
+    padding: 20px;
+  }
+
+  .footer-section h2, .footer-section h1 {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+
+  .footer-section p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .logo-text span {
+    color: #FFD700;
+  }
+
+  .contact span {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .footer-section.links ul {
+    list-style-type: none;
+  }
+
+  .footer-section.links ul a {
+    text-decoration: none;
+    color: #b3b3b3;
+    transition: color 0.3s ease;
+  }
+
+  .footer-section.links ul a:hover {
+    color: #FFD700;
+  }
+
+  .footer-section.social .social-icons a {
+    color: #b3b3b3;
+    font-size: 24px;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+  }
+
+  .footer-section.social .social-icons a:hover {
+    color: #FFD700;
+  }
+
+  .footer-bottom {
+    background-color: #111;
+    color: #b3b3b3;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+    font-size: 14px;
+  }
+
+  .footer-bottom a {
+    color: #FFD700;
+    text-decoration: none;
+  }
+
+  .footer-bottom a:hover {
+    text-decoration: underline;
+  }
+  a{
+    color: #ffcc00;
+  }
+</style>
+</head>
+<body>
+
+    <nav aria-label="breadcrumb" class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">MCA Study Materials</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <li class="nav-item breadcrumb-item nav-os">
+                <a class="nav-link" href="os_video.html">Operating Systems</a>
+            </li>
+            <li class="nav-item breadcrumb-item nav-cn">
+                <a class="nav-link" href="cn_video.html">Computer Networks</a>
+            </li>
+            <li class="nav-item breadcrumb-item nav-dbms">
+                <a class="nav-link" href="dbms_video.html">Database Management Systems</a>
+            </li>
+            <li class="nav-item breadcrumb-item nav-java">
+                <a class="nav-link" href="java_video.html">Java</a>
+            </li>
+            <li class="nav-item breadcrumb-item active nav-wt">
+                <a class="nav-link" href="wt_video.html">Web Technologies</a>
+            </li>
+            </ol>
+        </div>
+    </nav>
+
+
+<div id="contain">
+    <div class="container">
+        <h2 id="os">Operating Systems</h2>
+        <ul>
+            <li><a href="os_notes.pdf" target="_blank">Lecture 1 - Introduction to Operating Systems (PDF)</a></li>
+            <li><a href="os_lecture2.pptx" target="_blank">Lecture 2 - Process Management (PPT)</a></li>
+        </ul>
+
+        <div class="iframe-container">
+            <iframe src="https://www.youtube.com/embed/videoseries?si=0_gYp_44iy01nbNe&list=PLBlnK6fEyqRiVhbXDGLXDk_OQAeuVcp2O" allowfullscreen></iframe>
+        </div>
+        </div>
+        
+</div>
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section about">
+            <h1 class="logo-text"><span>Edu</span>Way</h1>
+            <p>
+                We provide customer data platforms that empower you to integrate all of your data and orchestrate it across channels, partners, and systems.
+            </p>
+            <div class="contact">
+                <span><i class="fas fa-phone"></i> &nbsp; Umed: 7045347597 &nbsp; Maria: 9999999999</span>
+                <br>
+                <span><i class="fas fa-envelope"></i> &nbsp; info@digitalway.com</span>
+            </div>
+        </div>
+
+        <div class="footer-section links">
+            <h2>Quick Links</h2>
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section social">
+            <h2>Follow Us</h2>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        &copy; 2024 digitalway.com | Designed by Maria &  Umed
+
+    </div>
+</footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
