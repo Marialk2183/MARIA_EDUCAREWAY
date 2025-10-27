@@ -14,9 +14,9 @@ const SemesterSubjects = () => {
     'DSA': '/assets/dsa.jpg',
     'DS101': '/assets/dsa.jpg',
     'CN': '/assets/cn.jpg',
-    'CN101': '/assets/cn.jpg',
+  
     'OS': '/assets/os.jpg',
-    'OS101': '/assets/os.jpg',
+   
     'DBMS': '/assets/dbms.jpg',
     'DB101': '/assets/dbms.jpg',
     'WT': '/assets/wt.jpg',
