@@ -6,6 +6,8 @@ import Navbar from '../components/Navbar';
 const SemesterSubjects = () => {
   const { semesterId } = useParams();
   const [subjects, setSubjects] = useState([]);
+  const [semester, setSemester] = useState(null);
+  const [course, setCourse] = useState(null);
   const [loading, setLoading] = useState(true);
 
   // Map subject codes to local images
@@ -14,9 +16,9 @@ const SemesterSubjects = () => {
     'DSA': '/assets/dsa.jpg',
     'DS101': '/assets/dsa.jpg',
     'CN': '/assets/cn.jpg',
-  
+    'CN101': '/assets/cn.jpg',
     'OS': '/assets/os.jpg',
-   
+    'OS101': '/assets/os.jpg',
     'DBMS': '/assets/dbms.jpg',
     'DB101': '/assets/dbms.jpg',
     'WT': '/assets/wt.jpg',
@@ -67,18 +69,27 @@ const SemesterSubjects = () => {
   };
 
   useEffect(() => {
-    const fetchSubjects = async () => {
+    const fetchData = async () => {
       try {
         const response = await subjectAPI.getSubjectsBySemester(semesterId);
-        setSubjects(response.data.subjects);
+        const subjectsData = response.data.subjects;
+        setSubjects(subjectsData);
+        
+        // Get semester and course info from the first subject (they all have the same semester)
+        if (subjectsData.length > 0 && subjectsData[0].semester) {
+          setSemester(subjectsData[0].semester);
+          if (subjectsData[0].semester.course) {
+            setCourse(subjectsData[0].semester.course);
+          }
+        }
       } catch (error) {
-        console.error('Error fetching subjects:', error);
+        console.error('Error fetching data:', error);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchSubjects();
+    fetchData();
   }, [semesterId]);
 
   if (loading) {
@@ -118,24 +129,73 @@ const SemesterSubjects = () => {
       <Navbar />
 
       <div className="pt-20 pb-16">
-        {/* Breadcrumb */}
-        <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-center py-6 shadow-lg">
-          <nav className="text-lg font-semibold text-white">
-            <Link to="/dashboard" className="hover:text-yellow-300 transition-colors">
-              🏠 Home
-            </Link>
-            <span className="mx-3">›</span>
-            <span className="text-yellow-200">📚 Subjects</span>
-          </nav>
+        {/* Enhanced Breadcrumb Navigation */}
+        <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 py-4 shadow-lg">
+          <div className="max-w-7xl mx-auto px-4">
+            <nav className="flex items-center justify-between flex-wrap gap-4">
+              {/* Breadcrumb Path */}
+              <div className="flex items-center text-base font-semibold text-white flex-wrap">
+                <Link to="/dashboard" className="hover:text-yellow-300 transition-colors flex items-center">
+                  <span className="text-xl mr-2">🏠</span>
+                  <span>Home</span>
+                </Link>
+                
+                {course && (
+                  <>
+                    <span className="mx-3 text-yellow-200">›</span>
+                    <Link 
+                      to={`/course/${course.code}`}
+                      className="hover:text-yellow-300 transition-colors flex items-center"
+                    >
+                      <span className="text-xl mr-2">🎓</span>
+                      <span>{course.code}</span>
+                    </Link>
+                  </>
+                )}
+                
+                {semester && (
+                  <>
+                    <span className="mx-3 text-yellow-200">›</span>
+                    <Link 
+                      to={`/course/${course?.code}`}
+                      className="hover:text-yellow-300 transition-colors flex items-center"
+                    >
+                      <span className="text-xl mr-2">📅</span>
+                      <span>Semester {semester.semesterNumber}</span>
+                    </Link>
+                  </>
+                )}
+                
+                <span className="mx-3 text-yellow-200">›</span>
+                <span className="text-yellow-300 font-bold flex items-center">
+                  <span className="text-xl mr-2">📚</span>
+                  <span>Subjects</span>
+                </span>
+              </div>
+              
+              {/* Back Button */}
+              {course && (
+                <Link 
+                  to={`/course/${course.code}`}
+                  className="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg font-semibold transition-all flex items-center space-x-2 backdrop-blur-sm"
+                >
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                  <span>Back to Semesters</span>
+                </Link>
+              )}
+            </nav>
+          </div>
         </div>
 
         {/* Title Section */}
         <div className="text-center py-12 px-4">
           <h1 className="text-5xl font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
-            Choose Your Subject
+            {semester ? `Semester ${semester.semesterNumber}` : 'Choose Your Subject'}
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Explore comprehensive study materials, video lectures, and reference books
+            {course ? `${course.name} - ` : ''}Select a subject to access comprehensive study materials, video lectures, and reference books
           </p>
         </div>
 
