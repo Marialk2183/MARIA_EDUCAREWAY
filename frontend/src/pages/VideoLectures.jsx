@@ -42,16 +42,40 @@ const VideoLectures = () => {
     );
   }
 
-  // Extract YouTube video ID from URL
+  // Convert YouTube URL to embed format (handles both videos and playlists)
   const getYouTubeEmbedUrl = (url) => {
     if (!url) return '';
     
-    // Handle different YouTube URL formats
-    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-    const match = url.match(regExp);
-    const videoId = match && match[2].length === 11 ? match[2] : null;
-    
-    return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
+    try {
+      // Check if it's a playlist URL
+      if (url.includes('playlist') || url.includes('list=')) {
+        const listMatch = url.match(/[?&]list=([^&]+)/);
+        if (listMatch && listMatch[1]) {
+          return `https://www.youtube.com/embed/videoseries?list=${listMatch[1]}`;
+        }
+      }
+      
+      // Handle individual video URLs
+      // Supports: youtube.com/watch?v=xxx, youtu.be/xxx, youtube.com/embed/xxx
+      const videoRegExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+      const match = url.match(videoRegExp);
+      
+      if (match && match[2] && match[2].length === 11) {
+        return `https://www.youtube.com/embed/${match[2]}`;
+      }
+      
+      // If already an embed URL, return as is
+      if (url.includes('youtube.com/embed/')) {
+        return url;
+      }
+      
+      // Fallback: return original URL
+      console.warn('Could not convert YouTube URL:', url);
+      return url;
+    } catch (error) {
+      console.error('Error converting YouTube URL:', error);
+      return url;
+    }
   };
 
   return (
