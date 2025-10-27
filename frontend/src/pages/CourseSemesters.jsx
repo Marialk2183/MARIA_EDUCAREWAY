@@ -54,8 +54,11 @@ const CourseSemesters = () => {
   }
 
   const semesters = course.semesters || [];
+  
+  // Sort semesters by semesterNumber in ascending order
+  const sortedSemesters = [...semesters].sort((a, b) => a.semesterNumber - b.semesterNumber);
 
-  if (semesters.length === 0) {
+  if (sortedSemesters.length === 0) {
     return (
       <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-100 to-teal-100">
         <Navbar />
@@ -88,8 +91,8 @@ const CourseSemesters = () => {
         </div>
 
         <div className="max-w-4xl mx-auto px-4 space-y-8">
-          {course.semesters && course.semesters.length > 0 ? (
-            course.semesters.map((semester) => {
+          {sortedSemesters.length > 0 ? (
+            sortedSemesters.map((semester) => {
               // Different colors for each semester
               const gradientColors = {
                 1: 'from-blue-500 to-cyan-600',

@@ -10,6 +10,7 @@ const SemesterSubjects = () => {
 
   // Map subject codes to local images
   const subjectImageMap = {
+    // Semester 1
     'DSA': '/assets/dsa.jpg',
     'DS101': '/assets/dsa.jpg',
     'CN': '/assets/cn.jpg',
@@ -22,12 +23,23 @@ const SemesterSubjects = () => {
     'WT101': '/assets/wt.jpg',
     'JAVA': '/assets/java.jpg',
     'JV101': '/assets/java.jpg',
+    
+    // Semester 2
+    'PYTHON': '/assets/python.jpg',
+    'PY101': '/assets/python.jpg',
+    'SE': '/assets/sof.jpg',
+    'MAD': '/assets/mobile.jpeg',
+    'STATS': '/assets/prob.jpg',
+    'AWD': '/assets/Advanced-Web-Development-1-500x385-1.png',
+    
+    // Semester 3
     'ML': '/assets/ml.png',
     'ML101': '/assets/ml.png',
     'AI': '/assets/ai.jpg',
     'AI101': '/assets/ai.jpg',
-    'PYTHON': '/assets/python.jpg',
-    'PY101': '/assets/python.jpg',
+    'ASP': '/assets/asp.jpg',
+    'CYBER': '/assets/cyber.jpg',
+    'CLOUD': '/assets/cloud.jpg',
   };
 
   // Get image URL for a subject
@@ -102,79 +114,108 @@ const SemesterSubjects = () => {
   }
 
   return (
-    <div className="min-h-screen bg-cover bg-center" style={{ backgroundImage: 'url(/assets/gr.png)' }}>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
       <Navbar />
 
-      <div className="pt-20">
+      <div className="pt-20 pb-16">
         {/* Breadcrumb */}
-        <div className="bg-gradient-to-r from-blue-400 to-teal-400 text-center py-6 shadow-lg">
-          <nav className="text-lg font-semibold">
-            <Link to="/dashboard" className="text-black hover:underline hover:text-white transition-colors">
+        <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-center py-6 shadow-lg">
+          <nav className="text-lg font-semibold text-white">
+            <Link to="/dashboard" className="hover:text-yellow-300 transition-colors">
               🏠 Home
             </Link>
-            <span className="mx-3 text-black">›</span>
-            <span className="text-white">📚 Subjects</span>
+            <span className="mx-3">›</span>
+            <span className="text-yellow-200">📚 Subjects</span>
           </nav>
         </div>
 
-        {/* Title */}
-        <div className="text-center py-8">
-          <h1 className="text-4xl font-bold text-gray-800 drop-shadow-lg">
-            Select Your Subject
+        {/* Title Section */}
+        <div className="text-center py-12 px-4">
+          <h1 className="text-5xl font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
+            Choose Your Subject
           </h1>
-          <p className="text-lg text-gray-700 mt-2">Click on any subject to view resources</p>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Explore comprehensive study materials, video lectures, and reference books
+          </p>
         </div>
 
-        {/* Subject Circles */}
-        <div className="flex items-center justify-center min-h-[60vh] px-4 pb-12">
-          <div className="flex flex-wrap items-center justify-center gap-8 max-w-6xl">
+        {/* Subject Cards Grid */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {subjects.map((subject, index) => {
               const imageUrl = getSubjectImage(subject);
+              
+              // Dynamic gradient colors for each card
+              const gradients = [
+                'from-blue-500 to-cyan-500',
+                'from-purple-500 to-pink-500',
+                'from-green-500 to-teal-500',
+                'from-orange-500 to-red-500',
+                'from-indigo-500 to-purple-500',
+                'from-yellow-500 to-orange-500',
+              ];
+              const gradient = gradients[index % gradients.length];
+              
               return (
-                <React.Fragment key={subject.id}>
-                  <Link to={`/subject/${subject.id}`} className="group">
-                    <div className="text-center">
-                      {/* Circular Subject Icon */}
-                      <div className="relative">
-                        <div
-                          className="w-44 h-44 rounded-full border-4 border-dotted border-black bg-white bg-cover bg-center flex items-center justify-center text-center group-hover:scale-125 group-hover:border-blue-600 transition-all duration-300 shadow-2xl group-hover:shadow-blue-500/50 cursor-pointer overflow-hidden"
-                          style={{
-                            backgroundImage: `url(${imageUrl})`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center',
-                          }}
-                          title={subject.name}
-                        >
-                          {/* Hover Overlay */}
-                          <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 rounded-full flex items-center justify-center">
-                            <span className="text-white font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity px-2 text-center">
-                              Click to View
-                            </span>
-                          </div>
-                        </div>
-                        
-                        {/* Glow effect on hover */}
-                        <div className="absolute inset-0 rounded-full bg-blue-400 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300 -z-10"></div>
+                <Link 
+                  key={subject.id} 
+                  to={`/subject/${subject.id}`}
+                  className="group"
+                >
+                  <div className="bg-white rounded-2xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl h-full">
+                    {/* Image Section */}
+                    <div className="relative h-48 overflow-hidden">
+                      <img 
+                        src={imageUrl} 
+                        alt={subject.name}
+                        className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"
+                      />
+                      {/* Gradient Overlay */}
+                      <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-300`}></div>
+                      
+                      {/* Subject Code Badge */}
+                      <div className="absolute top-4 right-4">
+                        <span className={`bg-gradient-to-r ${gradient} text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg`}>
+                          {subject.code}
+                        </span>
                       </div>
-                      
-                      {/* Subject Name - Always visible */}
-                      <p className="mt-4 font-bold text-gray-800 text-base px-2 text-center">
-                        {subject.name}
-                      </p>
-                      
-                      {/* Subject Code - Shows on hover */}
-                      <p className="mt-1 font-semibold text-blue-600 text-sm opacity-0 group-hover:opacity-100 transition-opacity">
-                        {subject.code}
-                      </p>
                     </div>
-                  </Link>
-                  {index < subjects.length - 1 && (
-                    <span className="text-5xl text-gray-700 font-bold animate-pulse hidden sm:inline">→</span>
-                  )}
-                </React.Fragment>
+                    
+                    {/* Content Section */}
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">
+                        {subject.name}
+                      </h3>
+                      
+                      {subject.description && (
+                        <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                          {subject.description}
+                        </p>
+                      )}
+                      
+                      {/* Action Button */}
+                      <div className={`inline-flex items-center text-sm font-semibold bg-gradient-to-r ${gradient} bg-clip-text text-transparent group-hover:underline`}>
+                        <span>Explore Resources</span>
+                        <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                    </div>
+                    
+                    {/* Bottom Accent Line */}
+                    <div className={`h-1 bg-gradient-to-r ${gradient}`}></div>
+                  </div>
+                </Link>
               );
             })}
           </div>
+        </div>
+
+        {/* Additional Info */}
+        <div className="text-center mt-12 px-4">
+          <p className="text-gray-500 text-sm">
+            💡 Click on any subject card to access notes, videos, and reference books
+          </p>
         </div>
       </div>
     </div>
