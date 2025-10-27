@@ -89,19 +89,31 @@ const CourseSemesters = () => {
 
         <div className="max-w-4xl mx-auto px-4 space-y-8">
           {course.semesters && course.semesters.length > 0 ? (
-            course.semesters.map((semester) => (
-              <Link
-                key={semester.id}
-                to={`/semester/${semester.id}/subjects`}
-                className="block"
-              >
-                <div className="bg-gradient-to-r from-blue-500 to-green-600 rounded-lg shadow-lg p-8 hover:shadow-2xl transition-all transform hover:scale-105 text-center">
-                  <h4 className="text-2xl font-bold text-white">
-                    Semester {semester.semesterNumber}
-                  </h4>
-                </div>
-              </Link>
-            ))
+            course.semesters.map((semester) => {
+              // Different colors for each semester
+              const gradientColors = {
+                1: 'from-blue-500 to-cyan-600',
+                2: 'from-purple-500 to-pink-600',
+                3: 'from-green-500 to-teal-600',
+                4: 'from-orange-500 to-red-600',
+              };
+              
+              const gradient = gradientColors[semester.semesterNumber] || 'from-blue-500 to-green-600';
+              
+              return (
+                <Link
+                  key={semester.id}
+                  to={`/semester/${semester.id}/subjects`}
+                  className="block"
+                >
+                  <div className={`bg-gradient-to-r ${gradient} rounded-lg shadow-lg p-8 hover:shadow-2xl transition-all transform hover:scale-105 text-center`}>
+                    <h4 className="text-2xl font-bold text-white">
+                      Semester {semester.semesterNumber}
+                    </h4>
+                  </div>
+                </Link>
+              );
+            })
           ) : (
             <div className="text-center text-white text-xl">
               No semesters available for this course.

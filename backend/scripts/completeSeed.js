@@ -116,6 +116,49 @@ async function completeSeed() {
 
     console.log('✅ Subjects for Semester 1 created');
 
+    // Create Subjects for MCA Semester 2
+    const python = await Subject.create({
+      semesterId: mcaSem2.id,
+      name: 'Python Programming',
+      code: 'PYTHON',
+      description: 'Advanced Python programming concepts',
+      imageUrl: '/assets/python.jpg'
+    });
+
+    const softEng = await Subject.create({
+      semesterId: mcaSem2.id,
+      name: 'Software Engineering',
+      code: 'SE',
+      description: 'Software development lifecycle and methodologies',
+      imageUrl: '/assets/sof.jpg'
+    });
+
+    const mobile = await Subject.create({
+      semesterId: mcaSem2.id,
+      name: 'Mobile Application Development',
+      code: 'MAD',
+      description: 'Android and iOS app development',
+      imageUrl: '/assets/mobile.jpeg'
+    });
+
+    const stats = await Subject.create({
+      semesterId: mcaSem2.id,
+      name: 'Probability and Statistics',
+      code: 'STATS',
+      description: 'Statistical methods and probability theory',
+      imageUrl: '/assets/prob.jpg'
+    });
+
+    const advWeb = await Subject.create({
+      semesterId: mcaSem2.id,
+      name: 'Advanced Web Development',
+      code: 'AWD',
+      description: 'Modern web frameworks and technologies',
+      imageUrl: '/assets/Advanced-Web-Development-1-500x385-1.png'
+    });
+
+    console.log('✅ Subjects for Semester 2 created');
+
     // Create Subjects for MCA Semester 3
     const ai = await Subject.create({
       semesterId: mcaSem3.id,

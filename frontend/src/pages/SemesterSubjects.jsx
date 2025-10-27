@@ -8,6 +8,52 @@ const SemesterSubjects = () => {
   const [subjects, setSubjects] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Map subject codes to local images
+  const subjectImageMap = {
+    'DSA': '/assets/dsa.jpg',
+    'DS101': '/assets/dsa.jpg',
+    'CN': '/assets/cn.jpg',
+    'CN101': '/assets/cn.jpg',
+    'OS': '/assets/os.jpg',
+    'OS101': '/assets/os.jpg',
+    'DBMS': '/assets/dbms.jpg',
+    'DB101': '/assets/dbms.jpg',
+    'WT': '/assets/wt.jpg',
+    'WT101': '/assets/wt.jpg',
+    'JAVA': '/assets/java.jpg',
+    'JV101': '/assets/java.jpg',
+    'ML': '/assets/ml.png',
+    'ML101': '/assets/ml.png',
+    'AI': '/assets/ai.jpg',
+    'AI101': '/assets/ai.jpg',
+    'PYTHON': '/assets/python.jpg',
+    'PY101': '/assets/python.jpg',
+  };
+
+  // Get image URL for a subject
+  const getSubjectImage = (subject) => {
+    // First try the database imageUrl
+    if (subject.imageUrl && subject.imageUrl.startsWith('/assets/')) {
+      return subject.imageUrl;
+    }
+    
+    // Then try mapping by code
+    if (subjectImageMap[subject.code]) {
+      return subjectImageMap[subject.code];
+    }
+    
+    // Try mapping by name (case insensitive)
+    const subjectName = subject.name.toUpperCase();
+    for (const [key, value] of Object.entries(subjectImageMap)) {
+      if (subjectName.includes(key)) {
+        return value;
+      }
+    }
+    
+    // Default fallback image
+    return '/assets/book.png';
+  };
+
   useEffect(() => {
     const fetchSubjects = async () => {
       try {
@@ -81,31 +127,53 @@ const SemesterSubjects = () => {
 
         {/* Subject Circles */}
         <div className="flex items-center justify-center min-h-[60vh] px-4 pb-12">
-          <div className="flex flex-wrap items-center justify-center gap-8">
-            {subjects.map((subject, index) => (
-              <React.Fragment key={subject.id}>
-                <Link to={`/subject/${subject.id}`} className="group">
-                  <div className="text-center">
-                    <div
-                      className="w-40 h-40 rounded-full border-4 border-dotted border-black bg-cover bg-center flex items-center justify-center text-center group-hover:scale-125 group-hover:border-blue-600 transition-all duration-300 shadow-xl group-hover:shadow-2xl cursor-pointer"
-                      style={{
-                        backgroundImage: `url(${subject.imageUrl})`,
-                        backgroundSize: 'cover',
-                      }}
-                      title={subject.name}
-                    >
-                      <span className="sr-only">{subject.name}</span>
+          <div className="flex flex-wrap items-center justify-center gap-8 max-w-6xl">
+            {subjects.map((subject, index) => {
+              const imageUrl = getSubjectImage(subject);
+              return (
+                <React.Fragment key={subject.id}>
+                  <Link to={`/subject/${subject.id}`} className="group">
+                    <div className="text-center">
+                      {/* Circular Subject Icon */}
+                      <div className="relative">
+                        <div
+                          className="w-44 h-44 rounded-full border-4 border-dotted border-black bg-white bg-cover bg-center flex items-center justify-center text-center group-hover:scale-125 group-hover:border-blue-600 transition-all duration-300 shadow-2xl group-hover:shadow-blue-500/50 cursor-pointer overflow-hidden"
+                          style={{
+                            backgroundImage: `url(${imageUrl})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                          }}
+                          title={subject.name}
+                        >
+                          {/* Hover Overlay */}
+                          <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 rounded-full flex items-center justify-center">
+                            <span className="text-white font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity px-2 text-center">
+                              Click to View
+                            </span>
+                          </div>
+                        </div>
+                        
+                        {/* Glow effect on hover */}
+                        <div className="absolute inset-0 rounded-full bg-blue-400 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300 -z-10"></div>
+                      </div>
+                      
+                      {/* Subject Name - Always visible */}
+                      <p className="mt-4 font-bold text-gray-800 text-base px-2 text-center">
+                        {subject.name}
+                      </p>
+                      
+                      {/* Subject Code - Shows on hover */}
+                      <p className="mt-1 font-semibold text-blue-600 text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                        {subject.code}
+                      </p>
                     </div>
-                    <p className="mt-3 font-bold text-gray-800 text-sm opacity-0 group-hover:opacity-100 transition-opacity">
-                      {subject.code}
-                    </p>
-                  </div>
-                </Link>
-                {index < subjects.length - 1 && (
-                  <span className="text-5xl text-black font-bold animate-pulse">→</span>
-                )}
-              </React.Fragment>
-            ))}
+                  </Link>
+                  {index < subjects.length - 1 && (
+                    <span className="text-5xl text-gray-700 font-bold animate-pulse hidden sm:inline">→</span>
+                  )}
+                </React.Fragment>
+              );
+            })}
           </div>
         </div>
       </div>
