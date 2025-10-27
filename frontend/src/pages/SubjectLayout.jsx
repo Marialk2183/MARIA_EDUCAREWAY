@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { subjectAPI } from '../services/api';
+import Navbar from '../components/Navbar';
 
 const SubjectLayout = () => {
   const { subjectId } = useParams();
@@ -77,37 +78,7 @@ const SubjectLayout = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-cyan-900">
-      {/* Navigation Bar */}
-      <nav className="fixed top-0 left-0 w-full bg-black bg-opacity-80 backdrop-blur-md z-50 shadow-2xl">
-        <ul className="flex justify-center space-x-12 text-white py-6">
-          <li>
-            <Link to="/dashboard" className="hover:text-yellow-400 transition-colors font-semibold text-lg flex items-center space-x-2">
-              <span>🏠</span>
-              <span>Home</span>
-            </Link>
-          </li>
-          <li>
-            <a href="#" className="hover:text-yellow-400 transition-colors font-semibold text-lg">
-              Services
-            </a>
-          </li>
-          <li>
-            <a href="#" className="hover:text-yellow-400 transition-colors font-semibold text-lg">
-              Products
-            </a>
-          </li>
-          <li>
-            <a href="#" className="hover:text-yellow-400 transition-colors font-semibold text-lg">
-              About Us
-            </a>
-          </li>
-          <li>
-            <a href="#" className="hover:text-yellow-400 transition-colors font-semibold text-lg">
-              Contact Us
-            </a>
-          </li>
-        </ul>
-      </nav>
+      <Navbar />
 
       {/* Main Content */}
       <div className="min-h-screen flex items-center justify-center pt-24 px-4">

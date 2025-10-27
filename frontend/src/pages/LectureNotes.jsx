@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { subjectAPI, resourceAPI } from '../services/api';
 import { FaHome, FaDownload } from 'react-icons/fa';
 import { toast } from 'react-toastify';
+import Navbar from '../components/Navbar';
 
 const LectureNotes = () => {
   const { subjectId } = useParams();
@@ -69,25 +70,16 @@ const LectureNotes = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <div
-        className="bg-cover bg-center h-32 flex items-center shadow-lg"
-        style={{ backgroundImage: 'url(/assets/book.png)', backgroundSize: 'cover' }}
-      >
-        <Link 
-          to="/dashboard" 
-          className="ml-8 text-white bg-black bg-opacity-50 hover:bg-opacity-70 p-4 rounded-full text-3xl transition-all"
-          title="Back to Dashboard"
-        >
-          <FaHome />
-        </Link>
-        <div className="flex-1 text-center">
-          <h1 className="text-4xl font-bold text-white drop-shadow-lg bg-black bg-opacity-50 inline-block px-8 py-3 rounded-lg">
+      <Navbar />
+
+      {/* Page Header */}
+      <div className="bg-gradient-to-r from-blue-600 to-purple-600 py-12 mt-16 shadow-lg">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <h1 className="text-4xl font-bold text-white mb-2">
             📄 {subject?.name}
           </h1>
-          <p className="text-white text-lg mt-2 font-semibold drop-shadow-md">Lecture Notes</p>
+          <p className="text-white text-lg font-semibold">Lecture Notes</p>
         </div>
-        <div className="w-24"></div>
       </div>
 
       {/* Notes Grid */}

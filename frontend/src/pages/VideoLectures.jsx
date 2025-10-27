@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { subjectAPI, resourceAPI } from '../services/api';
 import { toast } from 'react-toastify';
+import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 const VideoLectures = () => {
@@ -80,23 +81,10 @@ const VideoLectures = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-100 to-blue-100">
-      {/* Navigation */}
-      <nav className="bg-gradient-to-r from-blue-900 to-purple-900 text-white py-6 shadow-2xl">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center justify-between">
-            <h1 className="text-3xl font-bold">🎓 MCA Study Materials</h1>
-            <div className="flex space-x-6">
-              <Link to="/dashboard" className="hover:text-yellow-400 transition-colors font-semibold flex items-center space-x-2">
-                <span>🏠</span>
-                <span>Home</span>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* Content */}
-      <div className="flex-1 py-12">
+      <div className="flex-1 py-12 pt-24">
         <div className="max-w-5xl mx-auto px-4">
           <div className="bg-gradient-to-br from-blue-900 to-purple-900 rounded-2xl shadow-2xl p-8 md:p-12 text-white">
             <div className="flex items-center justify-center mb-8">
