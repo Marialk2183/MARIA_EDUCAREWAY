@@ -7,6 +7,7 @@ import LandingPage from './pages/LandingPage';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
+import AdminDashboard from './pages/AdminDashboard';
 import CourseSemesters from './pages/CourseSemesters';
 import SemesterSubjects from './pages/SemesterSubjects';
 import SubjectLayout from './pages/SubjectLayout';
@@ -62,6 +63,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute>
+              <AdminDashboard />
             </ProtectedRoute>
           }
         />

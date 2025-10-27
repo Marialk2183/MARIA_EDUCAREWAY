@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 const Navbar = ({ transparent = false }) => {
-  const { user, logout } = useAuth();
+  const { user, dbUser, logout } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -35,6 +35,15 @@ const Navbar = ({ transparent = false }) => {
                 >
                   Dashboard
                 </Link>
+                {dbUser && dbUser.role === 'admin' && (
+                  <Link
+                    to="/admin"
+                    className="text-white hover:bg-purple-600 bg-purple-500 px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center space-x-1"
+                  >
+                    <span>🔐</span>
+                    <span>Admin</span>
+                  </Link>
+                )}
                 <button
                   onClick={handleLogout}
                   className="bg-secondary hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
